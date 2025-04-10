@@ -72,21 +72,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-window.addEventListener('scroll', function() {
-    let scrollPosition = window.scrollY;
 
-    // 設定背景圖片的滾動速度
-    let backgroundSpeed = scrollPosition * 0.15; // 背景滾動速度：5
 
-    // 設定 .page-content 的滾動速度
-    let contentSpeed = scrollPosition * 0.1; // 內容滾動速度：10
-
-    // 調整背景圖片位置
-    document.body.style.backgroundPosition = 'center ' + (-backgroundSpeed) + 'px';
-
-    // 設定 .page-content 的偏移，讓它滾動得更快
-    document.querySelector('.page-content').style.transform = 'translateY(' + contentSpeed + 'px)';
-});
 
 
 

@@ -9,13 +9,16 @@
 /* 滑動流暢 */
 html {
     scroll-behavior: smooth;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: Arial, sans-serif;
     background-image: url('picture/DSCF3636.JPG');
-    background-size: 100%;
-    background-repeat: repeat;
+    background-size: cover; /* 自動調整大小以覆蓋整個區域 */
+    background-repeat:no-repeat;
     background-position: center;
     height: 100%;
     width: 100%;
@@ -60,17 +63,20 @@ nav a {
 /* 主要內容區 */
 main {
     flex: 1; /* 撐滿可用空間 */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* width: 100%;
-    min-height: 100vh; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    align-items: center top;
+    margin-bottom: 200px;
+    width: 100%;
+    min-height: 100vh;
     margin: auto;
+    overflow: auto; /* 讓內容超出時能夠滾動 */
     
 }
 
 /* 讓不同 section 可以調整大小 */
 .page-content {
+    position: relative;
     width: 100%;
     max-width: 100%;
     min-height: 100%;
@@ -94,10 +100,9 @@ main {
 #about {
     color: #f4f4f4;
     max-width: 100%;
-    height: 1200px;
+    /* height: 1500px; */
     padding-left: 50px;
     padding-right: 50px;
-    
     
 }
 
@@ -180,7 +185,7 @@ main {
 /* Project 設定調整 */
 .project {
     width: 100%;
-    max-width: 300px; /* 最大寬度限制 */
+    max-width: 500px; /* 最大寬度限制 */
     aspect-ratio: 16 / 9; /* 高寬比保持一致 */
     overflow: hidden; /* 避免超出容器 */
     justify-content: center;
@@ -208,6 +213,15 @@ main {
     .icon {
         width: 30px;
         height: 30px;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .icon img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* 保持圖片比例，縮放至適應容器 */
     }
 }
 
