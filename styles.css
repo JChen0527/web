@@ -20,6 +20,7 @@ body {
     background-size: cover; /* 自動調整大小以覆蓋整個區域 */
     background-repeat:no-repeat;
     background-position: center;
+    background-attachment: fixed;
     height: 100%;
     width: 100%;
     display: flex;
