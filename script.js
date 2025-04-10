@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function () {
+    showPage('about'); // 預設開啟主頁
+});
+
 // 切換主要頁面
 function showPage(pageId) {
     const pages = document.querySelectorAll('.page-content');
