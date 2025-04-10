@@ -107,29 +107,29 @@ main {
 
 
 
-.icon_box{
+.icon_box {
     margin-top: 20px;
-    /* background-color: #0073e6; */
-    height: 70px;
     display: flex;
+    flex-wrap: wrap; /* 換行處理，避免寬度不夠時擠在一起 */
     gap: 15px;
+    justify-content: center; /* 或 left/right 看需求 */
 }
 
-.icon{
-    /* background-color: #fff; */
+.icon {
     width: 70px;
     height: 70px;
-    overflow: hidden; /* 隱藏超出區域的圖片部分 */
+    display: flex; /* 加上這行才會讓置中有效 */
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-
+    background-color: rgba(255, 255, 255, 0.1); /* 可選，看你要不要加背景框 */
+    overflow: hidden;
 }
 
-.icon img{
+.icon img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* 保持圖片比例，縮放至適應容器 */
+    object-fit: contain;
 }
 
 .text_title {
