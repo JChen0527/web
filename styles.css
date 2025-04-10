@@ -64,6 +64,7 @@ main {
     width: 100%;
     height: 100vh;
     margin: auto;
+    
 }
 
 /* 讓不同 section 可以調整大小 */
@@ -77,6 +78,7 @@ main {
     position: relative;
     z-index: 2;
     transition: transform 0.1s ease-out; /* 讓內容滾動時平滑過渡 */
+    
 }
 
 /* 隱藏的 section */
@@ -89,7 +91,11 @@ main {
 /* About Page */
 #about {
     color: #f4f4f4;
-    max-width: 90%;
+    max-width: 100%;
+    height: 1200px;
+    padding-left: 50px;
+    padding-right: 50px;
+    
     
 }
 
@@ -102,34 +108,36 @@ main {
 }
 
 #about p {
-    text-align: left;
+    text-align: justify;
+    
+    
 }
 
 
 
-.icon_box {
+.icon_box{
     margin-top: 20px;
+    /* background-color: #0073e6; */
+    height: 70px;
     display: flex;
-    flex-wrap: wrap; /* 換行處理，避免寬度不夠時擠在一起 */
     gap: 15px;
-    justify-content: center; /* 或 left/right 看需求 */
 }
 
-.icon {
+.icon{
+    /* background-color: #fff; */
     width: 70px;
     height: 70px;
-    display: flex; /* 加上這行才會讓置中有效 */
+    overflow: hidden; /* 隱藏超出區域的圖片部分 */
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.1); /* 可選，看你要不要加背景框 */
-    overflow: hidden;
+
 }
 
-.icon img {
+.icon img{
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: contain; /* 保持圖片比例，縮放至適應容器 */
 }
 
 .text_title {
@@ -149,40 +157,52 @@ main {
 /* Portfolio Page */
 #portfolio {
     color: #f4f4f4;
-    padding-top: 100px;
+    max-width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 90px;
 }
 
+/* 改進 Grid 佈局，使用 auto-fit 和 minmax 讓容器根據螢幕大小自動調整 */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 10fr));
-    gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 最小 300px, 最大 1fr */
+    gap: 20px;  /* 增加間距 */
     justify-items: center;
     align-items: center;
     padding: 20px;
 }
 
+/* Project 設定調整 */
 .project {
     width: 100%;
     max-width: 500px; /* 最大寬度限制 */
-    aspect-ratio: 16 / 9; /* 統一高寬比例 */
-    overflow: hidden; /* 避免圖片或內容超出區域 */
-    border-radius: 10px; /* 圓角 */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 陰影效果 */
-    transition: transform 0.3s ease-in-out; /* 鼠標懸停時平滑放大 */
-    color: #ffffff; /* 文字顏色 */
-    margin-top: 10px; /* 上邊距 */
-    position: relative; /* 設置相對定位，為子元素定位 */
-    text-align: center; /* 文字居中 */
+    aspect-ratio: 16 / 9; /* 高寬比保持一致 */
+    overflow: hidden; /* 避免超出容器 */
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    color: #ffffff;
+    margin-top: 10px;
+    position: relative;
+    text-align: center;
 }
 
-
+/* 確保圖片會隨容器大小縮放，不會超出邊界 */
 .project img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* 使圖片填滿區域 */
     display: block;
     border-radius: 10px;
     transition: filter 0.3s ease-in-out;
+}
+
+/* 加強響應式圖片處理 */
+.project img {
+    width: 100%;
+    max-width: 100%;
+    height: auto; /* 高度自適應 */
 }
 
 .project::after {
@@ -198,20 +218,22 @@ main {
     z-index: 1;
 }
 
+.project:hover {
+    transform: scale(1.05);
+}
+
 .project:hover::after {
     opacity: 1;
 }
 
-.project:hover {
-    transform: scale(1.05);
-}
+
 
 .project .work-name {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 60px;
+    font-size: 30px;
     color: white;
     opacity: 0;
     visibility: hidden;
@@ -226,6 +248,42 @@ main {
 }
 
 /* 作品集細節頁 */
+#work-details {
+    color: #f4f4f4;
+    max-width: 100%;
+    height: 1200px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#work-bg {
+    position: absolute;
+    background-color: #151515;
+    width: 120%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: -100px;
+}
+
+#work-details p {
+    margin-top: 10px;
+}
+
+#work-details h1{
+    font-size: 20px;
+}
+
+#work-details h3{
+    margin-top: 10px;
+    font-size: 18px;
+    text-align: justify;
+}
+
+#work-details button {
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
 .work-title {
     padding-top: 10px;
     text-align: center;
@@ -245,6 +303,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    text-align: justify;
 }
 
 .img {
@@ -263,35 +322,24 @@ main {
     height: 100%;
 }
 
-#work-details {
-    color: #f4f4f4;
-    text-align: left;
-    max-width: 90%;
-}
-
-#work-bg {
-    position: absolute;
-    background-color: #151515;
-    width: 120%;
-    height: 100%;
-    z-index: -1;
-    top: 0;
-    left: -100px;
-}
-
-#work-details p {
-    margin-top: 10px;
-}
-
-#work-details button {
-    margin-top: 10px;
-}
 
 /* Contact Page */
 #contact {
-    color: #f4f4f4;
-    margin-top: 20%;
+    width: 100%;
+    height: 100vh;
+    display: flex;            /* 使用 Flexbox 來啟用彈性佈局 */
+    flex-direction: column;   /* 讓子元素垂直排列 */
+    justify-content: center;  /* 垂直居中 */
+    align-items: center;      /* 水平居中 */
+    text-align: center;       /* 文字居中 */
 }
+
+#contact h2,
+#contact p {
+    color: #f4f4f4;
+    margin: 10px 0;           /* 設定上下邊距 */
+}
+
 
 /* 頁腳 */
 footer {
