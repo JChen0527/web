@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeremy Chen</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <!-- <image src = "picture/DSCF3636.JPG"/> -->
+
+    <header>
+        <nav>
+            <ul id="menu">
+                <li><a href="javascript:void(0);" onclick="showPage('home')">Home</a></li>
+                <li><a href="javascript:void(0);" onclick="showPage('about')">關於我</a></li>
+                <li><a href="javascript:void(0);" onclick="showPage('portfolio')">作品集</a></li>
+                <li><a href="javascript:void(0);" onclick="showPage('contact')">聯絡</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Home -->
+        <section id="home" class="page-content hidden">
+            <!-- <div id="home-bg"></div> -->
+            <!-- <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul> -->
+        </section>
+        
+
+        <!-- About Me -->
+        <section id="about" class="page-content hidden">
+            <h2 style="text-align: center; margin-top: 50px;">- About Me -</h2>
+            <h1 class=text_title>。自我介紹。</h1>
+                <p class = "text_about_me">
+                我的名字叫陳俊傑，出生於台北市，平常的休閒興趣是打羽球及戶外踏青，專長是產品設計、3D建模、產品及場景彩現。我的個性是活潑外向，對於新奇的事物都很感興趣，也非常熱愛學習。3D的部分，在有空閒之餘時，我也會看看網路上不同的教學影片，持續的不斷精進自已。
+                </p>
+            
+            <h1 class = text_title>。工作生涯。</h1>
+                <p class= "text_about_me">
+                在大四的那年我選擇到了愛拍光電實習，在公司我是擔任研發部產品設計師的職位，在我任職的一年內，我負責了醫療臉部掃描建模的產品設計，在這次專案中我將3D這方面的專長在產品領域發揮，也在工作過程中跟著軟體工程師學習到了一些軟體方面及3D掃描的技術(SFM)，後半年是光寶的互動式展架的研究及研發，畢業後則在原本的公司工作待到結束。
+                </p>
+                <p class= "text_about_me">
+                接著我是到了朋友成立的田茂智能互聯來做幫忙，在公司內擔任專案管理及3D建模設計師的職位，在工作的期間內，與成員們製作台中國家歌劇院互動式導覽設計，包含到歌劇院去拍攝取景、VR
+                360環景及3D場景的建置。雖然過程中學習到相當多的經驗，但公司未來的走向是想往行銷及弱電去做發展，在與老闆的討論過後，決定離開原本的職位，並且尋找合適的工作。
+                </p>
+        </section>
+
+        <!-- 作品及主頁面 -->
+        <section id="portfolio" class="page-content hidden">
+            <h2>作品集</h2>
+            <div class="grid-container">
+                <div class="project">
+                    <a href="javascript:void(0);" onclick="showWorkDetails('work1')">
+                        <img src="picture/001.png" alt="作品1">
+                        <div class="work-name">nuPlant</div> <!-- 顯示作品名稱 -->
+                    </a>
+                    <p>nuPlant</p>
+                </div>
+                <div class="project">
+                    <a href="javascript:void(0);" onclick="showWorkDetails('work2')">
+                        <img src="picture/DSCF3636.JPG" alt="作品2">
+                        <div class="work-name">作品 2</div> <!-- 顯示作品名稱 -->
+                    </a>
+                    <p>作品 2</p>
+                </div>
+                <div class="project">
+                    <a href="javascript:void(0);" onclick="showWorkDetails('work3')">
+                        <img src="picture/DSCF3636.JPG" alt="作品3">
+                        <div class="work-name">作品 3</div> <!-- 顯示作品名稱 -->
+                    </a>
+                    <p>作品 3</p>
+                </div>
+                <div class="project">
+                    <a href="javascript:void(0);" onclick="showWorkDetails('work4')">
+                        <img src="picture/DSCF3636.JPG" alt="作品4">
+                        <div class="work-name">作品 4</div> <!-- 顯示作品名稱 -->
+                    </a>
+                    <p>作品 4</p>
+                </div>
+                <div class="project">
+                    <a href="javascript:void(0);" onclick="showWorkDetails('work5')">
+                        <img src="picture/DSCF3636.JPG" alt="作品5">
+                        <div class="work-name">作品 5</div> <!-- 顯示作品名稱 -->
+                    </a>
+                    <p>作品 5</p>
+                </div>
+                <div class="project">
+                    <a href="javascript:void(0);" onclick="showWorkDetails('work6')">
+                        <img src="picture/DSCF3636.JPG" alt="作品6">
+                        <div class="work-name">作品 6</div> <!-- 顯示作品名稱 -->
+                    </a>
+                    <p>作品 6</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 作品集分頁 -->
+        <section id="work-details" class="page-content hidden">
+            <div id="work-bg"></div>
+            <div id="work1" class="work-detail hidden">
+                    <h2 class="work-title">nuPlant</h2>
+                        <div class="box">
+                            <video controls width="50%" >
+                                <source src="video/2023高齡影片.mp4" type="video/mp4">
+                                您的瀏覽器不支援影片播放
+                            </video>
+                            <div class = "text_box">
+                                <h3>
+                                    面對超高齡化的2040社會，我們以 SDGs 其中兩大目標——健康生活福祉及永續城市發展，從自身的健康偵測與營養需求管理出發，鼓勵大眾在家中外牆與室內溫室種植具較高營養價值之蔬果及觀賞植物。運用更加精進之未來科技，如智慧偵測身體狀況後，根據
+                                    AI 提供之健康需求參考建議，無人機採收、快速運送新鮮蔬果，智慧家具及全息投影可即時根據需求調整。以智慧物聯網形成科技居家生活環境及蔬果互助社交圈，更同時綠化城市及美化生活環境，共同為維持環境永續盡一份心力。
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="img">
+                                <img src="picture/010.png">
+                            </div>
+                            <div class="text_box">
+                                <h1>
+                                    2040 問題發掘與定義 Problem Discovery and Definition
+                                </h1>
+                                <p>
+                                    高齡化｜老人健康照護｜高齡獨居問題｜環境綠化
+                                </p>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <h1>你有想過2040年的社會是什麼樣子嗎？</h1>
+                                <p>
+                                2040年台灣已邁入超高齡社會，高齡人口佔比將高達30.6％，經衛福部統計高齡族群未來最擔心的問題為身體健康及照護問題，且國人平均壽命增加造成醫療負擔加重，如何「保持身體健康」是重大挑戰。扶養比上升也使「獨居長者增加」，未來誰能照顧我、如何維持生活重心和提升自我價值成為長者們擔心的問題，面對未來的高齡生活你準備好了嗎？SDGs
+                                3及11以健康生活福祉及永續城市發展為目標，我們該如何透過不斷進步的科技以及對未來的想像，打造出適合高齡者生活的永續生態圈呢？
+                                </p>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="img1">
+                                <img src="/picture/高齡化.png">
+                            </div>
+                        </div>
+
+                        <div class="box">
+                            <div class="img1">
+                                <img src="/picture/高齡化.png">
+                            </div>
+                        </div>
+                    <button onclick="backToPortfolio()">回到作品集</button>
+            </div>
+            <div id="work2" class="work-detail hidden">
+                <h2>作品 2 - 詳細內容</h2>
+                <p>這是作品2的詳細介紹內容。</p>
+                <button onclick="backToPortfolio()">回到作品集</button>
+            </div>
+            <div id="work3" class="work-detail hidden">
+                <h2>作品 3 - 詳細內容</h2>
+                <p>這是作品3的詳細介紹內容。</p>
+                <button onclick="backToPortfolio()">回到作品集</button>
+            </div>
+            <div id="work4" class="work-detail hidden">
+                <h2>作品 4 - 詳細內容</h2>
+                <p>這是作品4的詳細介紹內容。</p>
+                <button onclick="backToPortfolio()">回到作品集</button>
+            </div>
+            <div id="work5" class="work-detail hidden">
+                <h2>作品 5 - 詳細內容</h2>
+                <p>這是作品5的詳細介紹內容。</p>
+                <button onclick="backToPortfolio()">回到作品集</button>
+            </div>
+            <div id="work6" class="work-detail hidden">
+                <h2>作品 6 - 詳細內容</h2>
+                <p>這是作品6的詳細介紹內容。</p>
+                <button onclick="backToPortfolio()">回到作品集</button>
+            </div>
+        </section>
+
+        <!-- 聯絡資訊 -->
+        <section id="contact" class="page-content hidden">
+            <h2>聯絡資訊</h2>
+            <p>Gmail : jeremy787230chen@gmail.com</p>
+            <p>Phone : 0910787230</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 我的網頁作品</p>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
