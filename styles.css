@@ -23,6 +23,8 @@ body {
     flex-direction: column;
     min-height: 100vh;
     overflow-x: hidden;
+    padding: 0;
+    margin: 0;
 }
 
 /* 頁首 */
@@ -57,12 +59,12 @@ nav a {
 
 /* 主要內容區 */
 main {
-    flex: 1;
+    flex: 1; /* 撐滿可用空間 */
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    height: 100vh;
+    /* width: 100%;
+    min-height: 100vh; */
     margin: auto;
     
 }
@@ -169,16 +171,20 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 最小 300px, 最大 1fr */
     gap: 20px;  /* 增加間距 */
     justify-items: center;
+    justify-content: center; /* 水平置中 */
     align-items: center;
     padding: 20px;
+    /* overflow-x: hidden; 預防超出用 */
 }
 
 /* Project 設定調整 */
 .project {
     width: 100%;
-    max-width: 500px; /* 最大寬度限制 */
+    max-width: 300px; /* 最大寬度限制 */
     aspect-ratio: 16 / 9; /* 高寬比保持一致 */
     overflow: hidden; /* 避免超出容器 */
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
@@ -186,6 +192,23 @@ main {
     margin-top: 10px;
     position: relative;
     text-align: center;
+}
+
+/* 手機小螢幕優化 */
+@media (max-width: 300px) {
+    .project {
+        aspect-ratio: auto; /* 關閉長寬比強制值 */
+        height: auto;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .icon {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 /* 確保圖片會隨容器大小縮放，不會超出邊界 */
@@ -348,7 +371,6 @@ footer {
     text-align: center;
     padding: 15px;
     width: 100%;
-    margin-top: auto;
 }
 
 .social-icons {
