@@ -3,37 +3,28 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* list-style: none; */
 }
 
 /* 滑動流暢 */
-html {
+html, body {
     scroll-behavior: smooth;
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
+/* 容器設定：讓 footer 能固定在底部 */
 #container {
-    /* 確保footer相對於container位置絕對定位 */
-    position: relative;
-    width: 100%;
-    min-height: 100%;
-
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: Arial, sans-serif ;
+    font-family: Arial, sans-serif;
     background-image: url('picture/DSCF3636.JPG');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     overflow-x: hidden;
-    
-    /* 確保main能全部顯示 */
-    padding-bottom: 100px;
-    box-sizing: border-box;
 }
 
 /* 頁首 */
@@ -58,40 +49,30 @@ nav ul {
     align-items: center;
 }
 
-
 nav a {
     color: white;
     text-decoration: none;
-    font-size: 18px;
-    text-align: center;
     font-size: 15px;
+    text-align: center;
 }
 
 /* 主要內容區 */
 main {
     flex: 1;
     width: 100%;
-    /* min-height: calc(100vh - 100px); */
-    /* padding-bottom: 100px; */
+    margin-top: 50px;
     box-sizing: border-box;
-    margin: auto;
     overflow: auto;
 }
 
-
 /* 讓不同 section 可以調整大小 */
 .page-content {
-    position: relative;
     width: 100%;
     max-width: 100%;
-    min-height: 100vh;
     padding: 20px;
     text-align: center;
     padding-top: 50px;
-    position: relative;
     z-index: 2;
-    /* transition: transform 0.1s ease-out; 讓內容滾動時平滑過渡 */
-    
 }
 
 /* 隱藏的 section */
@@ -99,20 +80,11 @@ main {
     display: none;
 }
 
-/* 頁面內容樣式 */
-
 /* About Page */
 #about {
     color: #f4f4f4;
-    max-width: 100%;
-    /* height: 1500px; */
-    padding-left: 50px;
-    padding-right: 50px;
-    
-}
-
-#about h1 {
-    
+    padding: 0 50px;
+    padding-bottom: 30px;
 }
 
 #about h2 {
@@ -121,35 +93,28 @@ main {
 
 #about p {
     text-align: justify;
-    
-    
 }
 
-
-
-.icon_box{
+.icon_box {
     margin-top: 20px;
-    /* background-color: #0073e6; */
     height: 70px;
     display: flex;
     gap: 15px;
 }
 
-.icon{
-    /* background-color: #fff; */
+.icon {
     width: 70px;
     height: 70px;
-    overflow: hidden; /* 隱藏超出區域的圖片部分 */
+    overflow: hidden;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-
 }
 
-.icon img{
+.icon img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* 保持圖片比例，縮放至適應容器 */
+    object-fit: contain;
 }
 
 .text_title {
@@ -165,51 +130,44 @@ main {
     font-size: 15px;
 }
 
-
 /* Portfolio Page */
 #portfolio {
     color: #f4f4f4;
-    max-width: 100%;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 90px;
+    margin-top: -15px;
 }
 
-/* 改進 Grid 佈局，使用 auto-fit 和 minmax 讓容器根據螢幕大小自動調整 */
+/* #portfolio h2{
+    padding-top: -100px;
+} */
+
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 最小 300px, 最大 1fr */
-    gap: 20px;  /* 增加間距 */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
     justify-items: center;
-    justify-content: center; /* 水平置中 */
+    justify-content: center;
     align-items: center;
     padding: 20px;
-    /* overflow-x: hidden; 預防超出用 */
 }
 
-/* Project 設定調整 */
 .project {
     width: 100%;
-    max-width: 500px; /* 最大寬度限制 */
-    aspect-ratio: 16 / 9; /* 高寬比保持一致 */
-    overflow: hidden; /* 避免超出容器 */
+    max-width: 500px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    /* transition: transform 0.3s ease-in-out; */
     color: #ffffff;
     margin-top: 10px;
     position: relative;
     text-align: center;
 }
 
-/* 手機小螢幕優化 */
 @media (max-width: 450px) {
-    
-    
     .project {
-        aspect-ratio: auto; /* 關閉長寬比強制值 */
+        aspect-ratio: auto;
         height: auto;
     }
 
@@ -225,28 +183,26 @@ main {
         align-items: center;
     }
 
-    .icon img{
+    .icon img {
         width: 100%;
         height: 100%;
-        object-fit: contain; /* 保持圖片比例，縮放至適應容器 */
+        object-fit: contain;
     }
 }
 
-/* 確保圖片會隨容器大小縮放，不會超出邊界 */
 .project img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 使圖片填滿區域 */
+    object-fit: cover;
     display: block;
     border-radius: 10px;
     transition: filter 0.3s ease-in-out;
 }
 
-/* 加強響應式圖片處理 */
 .project img {
     width: 100%;
     max-width: 100%;
-    height: auto; /* 高度自適應 */
+    height: auto;
 }
 
 .project::after {
@@ -269,8 +225,6 @@ main {
 .project:hover::after {
     opacity: 1;
 }
-
-
 
 .project .work-name {
     position: absolute;
@@ -295,16 +249,13 @@ main {
 #work-details {
     color: #f4f4f4;
     max-width: 100%;
-    min-height: 100%;
-    padding-left: 30px;
-    padding-right: 30px;
-    position: relative; /* 絕對定位子元素參考它定位 */
+    padding: 0 30px;
+    position: relative;
 }
 
 #work-bg {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.532); /* 半透明 */
-    
+    background-color: rgba(0, 0, 0, 0.532);
     width: 100%;
     height: 100%;
     top: 0;
@@ -317,11 +268,11 @@ main {
     margin-top: 10px;
 }
 
-#work-details h1{
+#work-details h1 {
     font-size: 20px;
 }
 
-#work-details h3{
+#work-details h3 {
     margin-top: 10px;
     font-size: 18px;
     text-align: justify;
@@ -331,6 +282,7 @@ main {
     margin-top: 10px;
     margin-bottom: 50px;
 }
+
 .work-title {
     padding-top: 100px;
     text-align: center;
@@ -369,13 +321,10 @@ main {
     height: 100%;
 }
 
-
 /* Contact Page */
 #contact {
     width: 100%;
-    /* min-height: 100%; */
-    height: 10px;
-    
+    height: auto;
 }
 
 .contact-bg {
@@ -384,17 +333,14 @@ main {
     height: 200px;
     backdrop-filter: blur(5px);
     margin-top: 80px;
-
-    /* 加上 Flexbox */
     display: flex;
     flex-direction: column;
-    justify-content: center;  /* 垂直置中 */
-    align-items: center;      /* 水平置中 */
+    justify-content: center;
+    align-items: center;
     border-radius: 15px;
 }
 
 #contact h2 {
-    padding: 0;
     margin: 0;
     color: #f4f4f4;
 }
@@ -402,20 +348,17 @@ main {
 #contact p {
     color: #f4f4f4;
     margin: 5px 0;
+    text-align: center;
 }
-
 
 /* 頁腳 */
 footer {
-    position: relative;
     background-color: #333;
     color: white;
     text-align: center;
     padding: 15px;
     width: 100%;
     height: 90px;
-    position: absolute;
-    bottom: 0;
 }
 
 .social-icons {
@@ -435,11 +378,3 @@ footer {
 .social-icon:hover {
     color: #0073e6;
 }
-
-
-
-
-
-
-
-
