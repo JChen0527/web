@@ -11,13 +11,26 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    overscroll-behavior: none;
 }
 
-/* 容器設定：讓 footer 能固定在底部 */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('picture/DSCF3636.JPG') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+}
+
+/* 容器設定 */
 #container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     font-family: Arial, sans-serif;
     background-image: url('picture/DSCF3636.JPG');
     background-size: cover;
@@ -29,7 +42,7 @@ html, body {
 
 /* 頁首 */
 header {
-    background-color: #333;
+    background-color: #0000007a;
     color: white;
     padding: 20px 0;
     text-align: center;
@@ -60,12 +73,11 @@ nav a {
 main {
     flex: 1;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 60px;
     box-sizing: border-box;
     overflow: auto;
 }
 
-/* 讓不同 section 可以調整大小 */
 .page-content {
     width: 100%;
     max-width: 100%;
@@ -75,29 +87,232 @@ main {
     z-index: 2;
 }
 
-/* 隱藏的 section */
 .hidden {
     display: none;
 }
 
+/* Home Page */
+#home {
+    padding: 0;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.about-wrapper1 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 1000px; 
+}
+
+
+.home-bgl {
+    container-type: inline-size;
+    container-name: bgl;
+    background-color: #ffffff43;
+    width: 30%;
+    height: 100%;
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.title1 {
+    padding-top: 200px;
+    padding-left: 5%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: url('picture/DSCF3636.JPG');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    
+    font-weight: bold;
+    font-size: 24px; /* 預設大小，容器不支援時用這個 */
+    color: transparent;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 3;
+
+    -webkit-text-stroke: 2px #ffffff;
+    
+    
+}
+
+.title-text {
+    color: #ffffff;
+    text-align: justify;
+    z-index: 1;
+    /* height: auto; */
+}
+
+.text_title, .text_about_me {
+    padding-left: 100px;
+    padding-right: 30px;
+}
+
+.text_about_me {
+    padding-top: 10px;
+}
+
+.home-bgr {
+    display: flex;
+    background-color: #000000;
+    width: 70%;
+    flex-direction: column;
+}
+
+.home-bgr-title1 {
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: url('picture/DSCF3636.JPG');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    
+    font-weight: bold;
+    font-size: clamp(48px, 10vw, 180px);
+    color: transparent;
+    text-align: left;
+    
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 3; 
+
+    -webkit-text-stroke: 2px #f4f4f4;
+}
+
+.home-bgr-t1 {
+    display: flex;
+}
+
+.home-bgr-png {
+    /* height: 100px; */
+    width: 300px;
+    justify-content: center;     /* 水平置中 */
+    align-items: center;         /* 垂直置中 */
+}
+
+.home-bgr-png img{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-bgr-main {
+    height: auto;
+    width: 100%;
+    /* background-color: #0574e37d; */
+    margin-left: 10px;
+}
+
+.home-bgr-main-work {
+    color: #f4f4f4;
+    text-align: right;
+    padding-right: 100px;
+
+}
+
+.home-bgr-main-work h3 {
+    text-decoration: underline;
+    font-weight: 900;
+    
+}
+
+.home-bgr-main-work .first {
+    padding-top: 0;     /* 貼齊頂部 */
+}
+
+.home-bgr-main-work .spaced {
+    padding-top: 50px;     /* 貼齊頂部 */
+}
+
+.home-bgr-main-work li {
+    list-style: none;
+}
+
+.home-bgr-title2 {
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: url('../picture/DSCF3636.JPG'); /* ← 路徑依你的專案調整 */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll; /* 建議先關掉 fixed 測試 */
+
+    font-weight: bold;
+    font-size: 180px; /* 先固定測試 */
+    color: transparent;
+
+    text-align: right;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 100px;
+
+    -webkit-text-stroke: 2px #f4f4f4;
+    
+        
+}
+
+
+
+
+
+
 /* About Page */
 #about {
     color: #f4f4f4;
-    padding: 0 50px;
-    padding-bottom: 30px;
+    padding: 0 50px 30px 50px;
+    text-align: center;
 }
 
-#about h2 {
-    text-align: left;
+.about-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 1%;
+    box-sizing: border-box;
+    gap: 20px;
 }
 
-#about p {
+.left, .center, .right {
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    line-height: 30px;
+}
+
+.left {
+    width: 400px;
+    background-color: #0073e6;
+    padding-left: 0px;
     text-align: justify;
 }
 
-.icon_box {
+.center {
+    width: 550px;
+    background-color: brown;
+    text-align:justify;
+}
+
+.right {
+    width: 400px;
+    background-color: #365600;
+}
+
+/* About Icon */
+#icon_box {
     margin-top: 20px;
     height: 70px;
+    width: 400px;
     display: flex;
     gap: 15px;
 }
@@ -130,15 +345,15 @@ main {
     font-size: 15px;
 }
 
+/* .clearfix {
+    clear: both;
+} */
+
 /* Portfolio Page */
 #portfolio {
     color: #f4f4f4;
     margin-top: -15px;
 }
-
-/* #portfolio h2{
-    padding-top: -100px;
-} */
 
 .grid-container {
     display: grid;
@@ -165,31 +380,6 @@ main {
     text-align: center;
 }
 
-@media (max-width: 450px) {
-    .project {
-        aspect-ratio: auto;
-        height: auto;
-    }
-
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
-
-    .icon {
-        width: 30px;
-        height: 30px;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .icon img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-}
-
 .project img {
     width: 100%;
     height: 100%;
@@ -197,12 +387,6 @@ main {
     display: block;
     border-radius: 10px;
     transition: filter 0.3s ease-in-out;
-}
-
-.project img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
 }
 
 .project::after {
@@ -220,10 +404,12 @@ main {
 
 .project:hover {
     transform: scale(1.05);
+    transition: 0.5s ease-in-out;
 }
 
 .project:hover::after {
     opacity: 1;
+    transition: 1s ease-in-out;
 }
 
 .project .work-name {
@@ -353,19 +539,20 @@ main {
 
 /* 頁腳 */
 footer {
-    background-color: #333;
+    background-color: #00000062;
     color: white;
     text-align: center;
-    padding: 15px;
+    padding: 10px;
     width: 100%;
-    height: 90px;
+    height: 80px;
 }
 
 .social-icons {
     display: flex;
     justify-content: center;
     gap: 20px;
-    padding-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
 }
 
 .social-icon {
@@ -378,3 +565,39 @@ footer {
 .social-icon:hover {
     color: #0073e6;
 }
+
+/* RWD for .about-wrapper */
+@media (max-width: 768px) {
+    .about-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left, .center, .right {
+        width: 90%;
+    }
+
+    .icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+
+@container (min-width: 200px) {
+  .title1 {
+    font-size: clamp(24px, 25cqw, 130px);
+  }
+
+  .home-bgr-title1{
+      font-size: clamp(24px, 25cqw, 130px);
+  }
+}
+
+

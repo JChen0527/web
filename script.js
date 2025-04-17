@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    showPage('about'); // 預設開啟主頁
+    showPage('home'); // 預設開啟主頁
 });
 
 // 切換主要頁面
@@ -74,7 +74,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+function setRealVH() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
 
+// 初始化與視窗大小變動時更新
+window.addEventListener('load', setRealVH);
+window.addEventListener('resize', setRealVH);
 
 
 
