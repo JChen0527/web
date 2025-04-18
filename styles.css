@@ -716,11 +716,12 @@ footer {
     .home-bgl img {
         width: 70%;
         display: block;
+        padding-top: 10px;
     }
 
 
     .title1 {
-        font-size: 100px;
+        font-size: 80px;
     }
 
     .home-bgr-title2{
