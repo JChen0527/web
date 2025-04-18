@@ -104,7 +104,7 @@ main {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 1000px; 
+    height: auto; 
 }
 
 
@@ -113,16 +113,26 @@ main {
     container-name: bgl;
     background-color: #ffffff43;
     width: 30%;
-    height: 100%;
+    height: 2080px;
     backdrop-filter: blur(20px);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    padding-left: 1%;
+}
+
+.home-bgl img{
+    padding-left: 5%;
+    width: 50%;
+    /* height: 100%; */
+    /* 保持圖片比例，填滿容器，可能會裁切部分圖片 */
+    /* object-fit: cover;  */
+
 }
 
 .title1 {
-    padding-top: 200px;
+    padding-top: 10%;
     padding-left: 5%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -132,8 +142,9 @@ main {
     background-position: center;
     background-attachment: fixed;
     
-    font-weight: bold;
-    font-size: 24px; /* 預設大小，容器不支援時用這個 */
+    font-weight:bold;
+    /* 預設大小，容器不支援時用這個 */
+    font-size: 24px; 
     color: transparent;
     text-align: left;
     width: 100%;
@@ -141,6 +152,7 @@ main {
     z-index: 3;
 
     -webkit-text-stroke: 2px #ffffff;
+    padding-right: 20px;
     
     
 }
@@ -150,22 +162,51 @@ main {
     text-align: justify;
     z-index: 1;
     /* height: auto; */
+    padding-left: 5%;
 }
 
 .text_title, .text_about_me {
-    padding-left: 100px;
-    padding-right: 30px;
+    /* padding-left: 40px; */
+    padding-right: 10%;
 }
 
 .text_about_me {
     padding-top: 10px;
 }
 
+
+/* About Icon */
+.home-bgl-icon-box {
+    margin-top: 20px;
+    padding-left: 5%;
+    height: 70px;
+    width: 400px;
+    display: flex;
+    gap: 15px;
+}
+
+.icon {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .home-bgr {
     display: flex;
     background-color: #000000;
     width: 70%;
+    height: 2080px;
     flex-direction: column;
+    padding-right: 5%;
 }
 
 .home-bgr-title1 {
@@ -191,74 +232,138 @@ main {
 
 .home-bgr-t1 {
     display: flex;
+    height: auto;
+    /* padding-top: 200px; */
 }
 
-.home-bgr-png {
-    /* height: 100px; */
-    width: 300px;
-    justify-content: center;     /* 水平置中 */
-    align-items: center;         /* 垂直置中 */
+.home-bgr-p1 {
+    display: flex;
+    /* 水平置中 */
+    justify-content: center;     
+    /* 垂直置中 */
+    align-items: center;         
+    width: 500px;
+    /* 或設定為特定高度，例如 300px */
+    height: auto; 
 }
 
-.home-bgr-png img{
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .home-bgr-main {
     height: auto;
     width: 100%;
     /* background-color: #0574e37d; */
-    margin-left: 10px;
 }
 
 .home-bgr-main-work {
     color: #f4f4f4;
     text-align: right;
-    padding-right: 100px;
-
-}
-
-.home-bgr-main-work h3 {
-    text-decoration: underline;
-    font-weight: 900;
     
 }
 
-.home-bgr-main-work .first {
-    padding-top: 0;     /* 貼齊頂部 */
-}
-
-.home-bgr-main-work .spaced {
-    padding-top: 50px;     /* 貼齊頂部 */
+.home-bgr-main-work h3 {
+    color: rgb(255, 255, 0);
+    text-decoration: underline;
+    font-weight: 900;
+    font-size: 30px;
+    
 }
 
 .home-bgr-main-work li {
     list-style: none;
+    font-size: 18px;
 }
 
+.home-bgr-main-work .first {
+    /* 貼齊頂部 */
+    padding-top: 0;     
+}
+
+.home-bgr-main-work .spaced {
+    /* 貼齊頂部 */
+    padding-top: 50px;     
+}
+
+
 .home-bgr-title2 {
+    padding-top: 4%;
     -webkit-background-clip: text;
     background-clip: text;
-    background-image: url('../picture/DSCF3636.JPG'); /* ← 路徑依你的專案調整 */
+    /* ← 路徑依你的專案調整 */
+    background-image: url('../picture/DSCF3636.JPG'); 
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: scroll; /* 建議先關掉 fixed 測試 */
+    /* 建議先關掉 fixed 測試 */
+    background-attachment: fixed; 
 
     font-weight: bold;
-    font-size: 180px; /* 先固定測試 */
+    /* 先固定測試 */
+    font-size: 180px; 
     color: transparent;
 
     text-align: right;
     width: 100%;
     box-sizing: border-box;
-    padding-right: 100px;
 
     -webkit-text-stroke: 2px #f4f4f4;
-    
         
+}
+.home-bgr-t2 {
+    height: auto;
+    padding-left: 10px;
+    /* display: flex; */
+}
+
+.home-bgr-title3 {
+    margin-left: 0px;
+    margin-top: 100px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* ← 路徑依你的專案調整 */
+    background-image: url('../picture/DSCF3636.JPG'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* 建議先關掉 fixed 測試 */
+    background-attachment: fixed; 
+
+    font-weight: bold;
+    /* 先固定測試 */
+    font-size: 180px; 
+    color: transparent;
+
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    
+
+    -webkit-text-stroke: 2px #f4f4f4;
+        
+}
+
+.home-bgr-p2 {
+    display: flex;
+    flex-wrap: nowrap;           /* 防止換行 */
+    overflow-x: auto;            /* 啟用水平滾動 */
+    -webkit-overflow-scrolling: touch; /* 提升 iOS 上的滾動體驗 */
+    gap: 16px;                   /* 圖片之間的間距，可根據需要調整 */
+    padding: 8px;                /* 內邊距，可根據需要調整 */
+    width: 100%;                 /* 讓容器寬度自適應 */
+    box-sizing: border-box;      /* 包含內邊距和邊框在內的寬度計算 */
+
+    /* 自訂捲軸樣式 */
+    scrollbar-width:none; /* Firefox */
+    scrollbar-color: #888 #f1f1f1; /* Firefox */
+    
+}
+
+.home-bgr-p2 img {
+    flex: 0 0 auto;              /* 防止圖片縮放 */
+    width: auto;                 /* 根據圖片原始寬度顯示 */
+    height: 500px;               /* 設定固定高度，可根據需要調整 */
+    object-fit: cover;           /* 保持圖片比例並填滿容器 */
+    border-radius: 8px;          /* 圓角效果，可根據需要調整 */
 }
 
 
@@ -308,29 +413,7 @@ main {
     background-color: #365600;
 }
 
-/* About Icon */
-#icon_box {
-    margin-top: 20px;
-    height: 70px;
-    width: 400px;
-    display: flex;
-    gap: 15px;
-}
 
-.icon {
-    width: 70px;
-    height: 70px;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-}
-
-.icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
 
 .text_title {
     margin-top: 20px;
@@ -592,7 +675,7 @@ footer {
 
 @container (min-width: 200px) {
   .title1 {
-    font-size: clamp(24px, 25cqw, 130px);
+    font-size: clamp(24px, 25cqw, 200px);
   }
 
   .home-bgr-title1{
