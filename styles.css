@@ -109,6 +109,7 @@ main {
 
 
 .home-bgl {
+    padding-top: 2.5%;
     container-type: inline-size;
     container-name: bgl;
     background-color: #ffffff43;
@@ -119,11 +120,10 @@ main {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding-left: 1%;
+    padding-left: 3%;
 }
 
 .home-bgl img{
-    padding-left: 5%;
     width: 50%;
     /* height: 100%; */
     /* 保持圖片比例，填滿容器，可能會裁切部分圖片 */
@@ -132,8 +132,6 @@ main {
 }
 
 .title1 {
-    padding-top: 10%;
-    padding-left: 5%;
     -webkit-background-clip: text;
     background-clip: text;
     background-image: url('picture/DSCF3636.JPG');
@@ -144,7 +142,7 @@ main {
     
     font-weight:bold;
     /* 預設大小，容器不支援時用這個 */
-    font-size: 24px; 
+    font-size: clamp(24px, 25cqw, 300px);
     color: transparent;
     text-align: left;
     width: 100%;
@@ -162,7 +160,6 @@ main {
     text-align: justify;
     z-index: 1;
     /* height: auto; */
-    padding-left: 5%;
 }
 
 .text_title, .text_about_me {
@@ -178,20 +175,26 @@ main {
 /* About Icon */
 .home-bgl-icon-box {
     margin-top: 20px;
-    padding-left: 5%;
-    height: 70px;
-    width: 400px;
+    padding-right: 10%;
     display: flex;
+    /* flex-wrap: wrap; */
     gap: 15px;
+    
+    height: auto;
+    width: 100%;
+    transform: scale(1);  /* ⭐ 預設大小，可用 JS 或 media query 調整 */
+    transform-origin: top left; /* ⭐ 避免縮放時位置偏移 */
+    transition: transform 0.3s ease;
 }
 
 .icon {
-    width: 70px;
-    height: 70px;
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 .icon img {
@@ -200,13 +203,15 @@ main {
     object-fit: contain;
 }
 
+
 .home-bgr {
     display: flex;
     background-color: #000000;
     width: 70%;
-    height: 2080px;
+    height: auto;
     flex-direction: column;
     padding-right: 5%;
+    padding-top: 2.5%;
 }
 
 .home-bgr-title1 {
@@ -233,6 +238,7 @@ main {
 .home-bgr-t1 {
     display: flex;
     height: auto;
+    container-type: inline-size;
     /* padding-top: 200px; */
 }
 
@@ -286,7 +292,7 @@ main {
 
 
 .home-bgr-title2 {
-    padding-top: 4%;
+
     -webkit-background-clip: text;
     background-clip: text;
     /* ← 路徑依你的專案調整 */
@@ -299,7 +305,7 @@ main {
 
     font-weight: bold;
     /* 先固定測試 */
-    font-size: 180px; 
+    font-size: clamp(24px, 10vw, 180px); 
     color: transparent;
 
     text-align: right;
@@ -309,7 +315,9 @@ main {
     -webkit-text-stroke: 2px #f4f4f4;
         
 }
+
 .home-bgr-t2 {
+    container-type: inline-size;
     height: auto;
     padding-left: 10px;
     /* display: flex; */
@@ -330,7 +338,7 @@ main {
 
     font-weight: bold;
     /* 先固定測試 */
-    font-size: 180px; 
+    font-size: clamp(24px, 25cqw, 180px);
     color: transparent;
 
     text-align: left;
@@ -651,7 +659,7 @@ footer {
 
 /* RWD for .about-wrapper */
 @media (max-width: 768px) {
-    .about-wrapper {
+    /* .about-wrapper {
         flex-direction: column;
         align-items: center;
     }
@@ -669,18 +677,22 @@ footer {
         width: 100%;
         height: 100%;
         object-fit: contain;
-    }
+    } */
 }
 
 
 @container (min-width: 200px) {
-  .title1 {
-    font-size: clamp(24px, 25cqw, 200px);
-  }
+    /* .title1 {
+        font-size: clamp(24px, 25cqw, 300px);
+    } */
 
-  .home-bgr-title1{
-      font-size: clamp(24px, 25cqw, 130px);
-  }
+    /* .home-bgr-title2{
+        font-size: clamp(24px, 25cqw, 500px);
+    } */
+
+    /* .home-bgr-title3{
+        font-size: clamp(24px, 25cqw, 180px);  
+    } */
 }
 
 
