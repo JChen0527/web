@@ -1,32 +1,30 @@
 
-/* === 基本樣式 === */
 * { margin:0; padding:0; box-sizing:border-box; }
 html, body {
   width:100%;
   height:100%;
-  overflow-x: hidden; /* 防止左右滾動 */
+  overflow-x: hidden;
   overflow-y: hidden;
   font-family: 'Chiron GoRound TC', 'Nunito', 'sans-serif';
 }
 
-/* === 自定義滾動條樣式（仿 progress-bar 設計）=== */
 ::-webkit-scrollbar {
-  width: 30px; /* 與 progress-bar 相同寬度 */
+  width: 30px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent; /* 移除底色 */
-  border-radius: 15px; /* 與 progress-bar 相同圓角 */
-  margin: 0px 0; /* 上下留白 */
-  border-right: 10px solid transparent; /* 右側留白，不貼邊 */
+  background: transparent;
+  border-radius: 15px;
+  margin: 0px 0;
+  border-right: 10px solid transparent;
   background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #fff; /* 與 progress-bar 的 ::after 相同 */
+  background: #fff;
   border-radius: 15px;
-  border: 3px solid transparent; /* 內縮效果 */
-  border-right-width: 10px; /* 右側留白，不貼邊 */
+  border: 3px solid transparent;
+  border-right-width: 10px;
   background-clip: padding-box;
 }
 
@@ -37,7 +35,7 @@ html, body {
 
 /* Firefox 滾動條樣式 */
 * {
-  scrollbar-width: auto; /* Firefox 只支持 auto, thin, none */
+  scrollbar-width: auto;
   scrollbar-color: #fff rgba(255, 255, 255, 0.3);
 }
 
@@ -47,8 +45,8 @@ html, body {
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  overflow-x: hidden; /* 防止左右滾動 */
-  overflow-y: auto; /* 平滑滾動 */
+  overflow-x: hidden;
+  overflow-y: auto;
   background-color: #ffbb56;
   color: white;
   transform: translateX(-100%);
@@ -57,7 +55,7 @@ html, body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  scroll-behavior: smooth; /* 平滑滾動 */
+  scroll-behavior: smooth;
 }
 #main-page.active { transform: translateX(0); }
 
@@ -69,30 +67,36 @@ html, body {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background-image: url("/picture/01-2.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  overflow: hidden;
+  align-items: center;
   color: white;
-  display: flex;
-  justify-content: right;
-  z-index: 2; /* 確保在太陽月亮之上 */
+}
+
+.about-me-bg {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  z-index: 0;
 }
 
 .about-center-block {
+  text-align: justify;
   position: absolute;
-  bottom: 20vh; /* Match .works padding-top */
-  left: 5%;
-  max-width: 600px;
+  left: 10%;
+  top: 50%;
+
+  max-width: 650px;
+  z-index: 2;
 }
+
 
 .about-center-block h1 {
   margin: 0 0 0px;
   font-size: 6rem;
-}
-
-.about-center-block p1 {
-  font-size: 1rem;
 }
 
 .about-center-block p {
@@ -105,7 +109,7 @@ html, body {
 .about-right-block {
   width: 100%;
   margin-top: 1rem;
-  padding-right: 120px; /* 預留空間給垂直跑馬燈，防止碰到文字 */
+  padding-right: 120px;
 }
 
 .about-right-block p {
@@ -120,25 +124,41 @@ html, body {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background-image: url("/picture/01-5.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  overflow: hidden;
+
+  color: white;
 }
 
+.awards-bg {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  z-index: 0;
+}
+
+/* 文字層 */
 .awards-text {
-  color: white;
+  position: relative;
+  z-index: 2;
+
   display: flex;
   align-items: center;
+  gap: 2%;
+
   padding-top: 15%;
   padding-left: 10%;
-  gap:2%;
 }
 
-.awards h1{
+/* 標題 */
+.awards h1 {
   font-size: 6rem;
 }
 
+/* 清單 */
 .awards ul {
   font-size: 1rem;
   list-style-type: disc;
@@ -150,11 +170,12 @@ html, body {
 }
 
 
-/* === Works / Timeline === */
+
+/* === Works === */
 .works { 
   position: relative;
   width: 100%;
-  min-height: 100vh; /* Changed from 100% since it's no longer inside a sticky container */
+  min-height: 100vh;
   color: white;
   display: flex;
   flex-direction: column;
@@ -167,7 +188,7 @@ html, body {
 .work-ticker {
   position: absolute;
   top: 0;
-  right: 5%; /* 回歸原本樣式位置 */
+  right: 5%;
   height: 100%;
   width: 100px;
   overflow: hidden;
@@ -179,12 +200,12 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 250px; /* 大幅增加間距，防止旋轉後的文字重疊 */
+  gap: 250px;
   animation: tickerMoveDown 25s linear infinite;
 }
 
 .ticker-inner span {
-  display: inline-block; /* 必須設為 inline-block 旋轉後的空間計算才會正常 */
+  display: inline-block;
   font-size: 5rem;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.401);
@@ -192,7 +213,7 @@ html, body {
   white-space: nowrap;
   letter-spacing: 5px;
   text-transform: uppercase;
-  line-height: 1; /* 保持行高一致 */
+  line-height: 1;
 }
 
 @keyframes tickerMoveDown {
@@ -250,7 +271,7 @@ html, body {
   height: 100%;
   background-color: #fff;
   opacity: 0.3;
-  display: none; /* 隱藏時間軸直線 */
+  display: none;
 }
 
 .work-item {
@@ -270,7 +291,7 @@ html, body {
   background-color: #fff;
   border-radius: 50%;
   transform: translateX(-50%);
-  display: none; /* 隱藏圓點 */
+  display: none;
 }
 
 .work-item h2 {
@@ -300,7 +321,7 @@ html, body {
   transform: translateX(0);
 }
 
-/* 為每個工作項目添加延遲效果 */
+/* work delay in */
 .works.fade-in .work-item:nth-child(1) {
   transition-delay: 0.2s;
 }
@@ -313,7 +334,7 @@ html, body {
   transition-delay: 0.6s;
 }
 
-/* === About Me 區塊淡入動畫 === */
+/* === About Me delay in === */
 .about-center-block {
   opacity: 0;
   transform: translateX(-100px);
@@ -337,7 +358,7 @@ html, body {
   transition-delay: 0.8s;
 }
 
-/* === Awards 區塊淡入動畫 === */
+/* === Awards delay in === */
 .awards-text h1,
 .awards-text ul {
   opacity: 0;
@@ -356,7 +377,7 @@ html, body {
   transition-delay: 0.3s;
 }
 
-/* === Photography 區塊淡入動畫 === */
+/* === Photography delay in === */
 .photography h1 {
   opacity: 0;
   transform: translateX(-100px);
@@ -382,56 +403,103 @@ html, body {
 }
 
 /* === Contact === */
-.contact-section { 
-  text-align: center; 
-  background-color: #00056b;
-  background-image: url("/picture/02.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-  /* Flex layout to center content */
+.contact-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative; /* For absolute footer */
+
+  color: white;
+  text-align: center;
 }
 
-.contact-section h1 { font-size: 3rem; margin-bottom: 20px; padding-top: 2rem;}
-.contact-section p { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.contact-bg {
+  position: absolute;
+  inset: 0;
 
-.social-links { 
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  z-index: 0;
+}
+
+/* 主要內容 */
+.contact-content {
+  position: relative;
+  z-index: 2;
+
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding-top: 3rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 標題與文字 */
+.contact-section h1 {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+}
+
+.contact-section .name {
+  font-size: 1.2rem;
+  letter-spacing: 0.15em;
   padding-bottom: 3rem;
 }
 
+.contact-section .email {
+  font-size: 1.1rem;
+  margin-top: 8px;
+}
+
+/* 社群連結 */
+.social-links {
+  display: flex;
+  gap: 20px;
+  padding: 3rem 0;
+}
+
 .social-links a {
-    color: #f4f4f4;
-    transition: color 0.3s ease, transform 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
+  color: #f4f4f4;
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+
+  transition: color .3s ease, transform .3s ease, background .3s ease;
 }
 
 .social-links a:hover {
-    color: #ffd54f;
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.2);
+  color: #ffd54f;
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.2);
 }
 
 .social-links svg {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
+
+/* footer  */
+.contact-footer {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+
+  text-align: center;
+  font-size: 0.8rem;
+  z-index: 2;
+}
+
 
 /* === 箭頭 === */
 .return-arrow-projects, .project .arrow, #projects-back, .detail-content .back {
@@ -647,14 +715,14 @@ html, body {
 }
 
 .project .arrow span {
-  left: 35%; /* 向左移動更多，不要太靠右邊 */
+  left: 35%;
   border-top-width: 3px;
   border-right-width: 3px;
 }
 
 #projects-back span,
 .detail-content .back span {
-  left: 65%; /* 向右移動更多，不要太靠左邊 */
+  left: 65%;
   border-bottom-width: 3px;
   border-left-width: 3px;
 }
@@ -720,10 +788,10 @@ html, body {
 
 .detail-scroll {
   height:100%;
-  overflow-x: hidden; /* 防止左右滾動 */
-  overflow-y: auto; /* 平滑滾動 */
+  overflow-x: hidden;
+  overflow-y: auto;
   padding:5%;
-  scroll-behavior: smooth; /* 平滑滾動 */
+  scroll-behavior: smooth;
 }
 .detail-content { 
   color: white;
@@ -739,20 +807,19 @@ html, body {
   position: relative;
   width: 100%;
   max-width: 900px;
-  /* 移除背景色與玻璃擬態 */
   background: transparent;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border: none;
   border-radius: 0;
-  padding: 10px 0; /* 移除左右內距，讓文字與圖片更寬 */
+  padding: 10px 0;
   box-shadow: none;
   text-align: left;
 }
 
-/* 專案大標題 (在 description 內) */
+/* 專案大標題 (description 內) */
 .project-title {
-  text-align: left; /* 改為靠左 */
+  text-align: left;
   margin-bottom: 3rem;
 }
 
@@ -824,10 +891,8 @@ html, body {
 }
 
 /* 列表優化 */
-/* 列表優化 */
 .project-description ul {
-  /* list-style: none; 取消隱藏預設符號 */
-  padding-left: 20px; /* 恢復縮排 */
+  padding-left: 20px;
   margin-bottom: 2rem;
 }
 
@@ -855,7 +920,7 @@ html, body {
   transform: scale(1.02);
 }
 
-.qrcode img { width: 200px; margin: 20px auto; } /* QR Code 限定寬度 */
+.qrcode img { width: 200px; margin: 20px auto; }
 
 
 
@@ -875,7 +940,6 @@ footer {
 /* === 手機版 RWD === */
 @media (max-width: 768px) {
   :root { --vh: 1vh; }
-  /* 全域高度與溢出防止 */
   html, body, #main-page, #projects, .detail { 
     height: calc(var(--vh, 1vh) * 100); 
     overflow-x: hidden;
@@ -892,7 +956,7 @@ footer {
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
-    padding: 80px 8% 40px !important; /* 上方預留空間給選單按鈕 */
+    padding: 80px 8% 40px !important;
     box-sizing: border-box !important;
     position: relative !important;
     overflow-y: visible !important;
@@ -912,7 +976,7 @@ footer {
   }
 
   /* --- About Me 手機版 --- */
-  .about-me { justify-content: center !important; } /* Change start to center to vertically center if needed, or keep start */
+  .about-me { justify-content: center !important; }
   .about-center-block {
     padding-top: 50%;
     position: static !important;
@@ -961,7 +1025,7 @@ footer {
   .skills-grid { justify-content: flex-start !important; gap: 10px !important; width: 100% !important; }
   .skill-tag { padding: 10px 20px !important; font-size: 0.9rem !important; }
   .logo-carousel { margin-top: 20px !important; }
-  .logo-track img { width: 45px !important; height: 45px !important; } /* Make logos slightly smaller to fit left align better */
+  .logo-track img { width: 45px !important; height: 45px !important; } 
   
   /* --- Main Projects Entrance --- */
   .main-projects { background-image: none !important; background-color: #ffbb56 !important; align-items: flex-start !important; }
@@ -1037,9 +1101,8 @@ footer {
 /* === Horizontal Gallery === */
 /* Container */
 .horizontal-gallery {
-  width: 100%; /* Changed from 100vw to avoid scrollbar overlap issues */
-  height: 70vh; /* Reduced from 100vh to fit with title */
-  overflow: hidden;
+  width: 100%;
+  height: 70vh;
   display: flex;
   align-items: center;
 }
@@ -1049,7 +1112,7 @@ footer {
   display: flex;
   gap: 40px;
   will-change: transform;
-  padding-left: 40px; /* Slight padding */
+  padding-left: 40px;
 }
 
 /* Photos */
@@ -1060,9 +1123,9 @@ footer {
   filter: grayscale(100%);
   transition: filter 0.4s ease, transform 0.4s ease;
   border-radius: 8px;
-  -webkit-touch-callout: none; /* 禁用手機長壓選單 */
-  user-select: none;           /* 禁止選取 */
-  -webkit-user-drag: none;     /* 禁止系統拖拽 */
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 /* Hover Micro-interaction */
@@ -1140,8 +1203,8 @@ footer {
   width: 100px;
   height: 100px;
   object-fit: contain;
-  filter: none; /* 移除黑白濾鏡 */
-  opacity: 1;    /* 設為完全不透明 */
+  filter: none;
+  opacity: 1;
   transition: all 0.3s ease;
 }
 
@@ -1151,21 +1214,33 @@ footer {
   transform: scale(1.2);
 }
 
-/* === Main Projects Section (Entrance) === */
+/* 共用背景 class */
+.section-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Main Projects 區塊 */
 .main-projects {
   position: relative;
   width: 100%;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  justify-content: center;
+  align-items: center;     /* 文字垂直置中 */
   padding: 0 10%;
-  background-image: url("/picture/Project/01/00.jpg"); /* 使用與 Awards 類似的背景風格 */
-  background-size: cover;
-  background-position: center;
+  color: white;
+  overflow: hidden;
 }
 
+/* 文字層級 */
 .main-projects-info {
-  color: white;
+  position: relative;
+  z-index: 2;
   opacity: 0;
   transform: translateX(-100px);
   transition: opacity 1.5s ease, transform 1.5s ease;
@@ -1176,17 +1251,13 @@ footer {
   transform: translateX(0);
 }
 
+/* 標題 */
 .main-projects-info h1 {
   font-size: 6rem;
   margin-bottom: 2rem;
 }
 
-.main-projects-link p {
-  font-size: 1.2rem;
-  margin-bottom: 3rem;
-  opacity: 0.8;
-}
-
+/* 按鈕 */
 .projects-entrance-btn {
   display: inline-block;
   font-size: 2rem;
@@ -1207,7 +1278,6 @@ footer {
   color: #ffbb56;
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
 }
-
 
 
 @media (max-width: 1400px) {
