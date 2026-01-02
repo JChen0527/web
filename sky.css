@@ -6,7 +6,7 @@
   width: 100%;
   height: 100%; /* 佔滿 main-page */
   pointer-events: none; /* 不擋住點擊 */
-  z-index: 1; /* 在背景處，但在內容之下 */
+  z-index: 0; /* 在背景處，但在內容之下 */
   overflow: hidden;
 }
 
