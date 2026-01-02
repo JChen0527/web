@@ -1006,7 +1006,7 @@ footer {
     text-align: justify !important;
   }
   .awards ul { padding: 0 !important; list-style: none !important; }
-  .awards ul p { margin-bottom: 8px !important;font-size: 0.8rem !important;  }
+  .awards ul p { margin-bottom: 8px !important;font-size: 0.75rem !important;  }
 
   /* --- Career (Works) 手機版 --- */
   .works h1 { text-align: left !important; }
