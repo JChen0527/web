@@ -518,3 +518,14 @@ sectionsToAnimate.forEach(({ selector, className, threshold }) => {
 })();
 
 
+document.body.classList.add('loading');
+
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loading-screen');
+
+  // 小延遲讓動畫順一點（可調）
+  setTimeout(() => {
+    loader.classList.add('hide');
+    document.body.classList.remove('loading');
+  }, 500);
+});
