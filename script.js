@@ -529,3 +529,26 @@ window.addEventListener('load', () => {
     document.body.classList.remove('loading');
   }, 500);
 });
+
+
+
+// lazy loader
+const lazyImages = document.querySelectorAll('img[data-src]');
+
+const imageObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+
+    const img = entry.target;
+    img.src = img.dataset.src;
+    img.removeAttribute('data-src');
+    img.classList.add('loaded');
+
+    observer.unobserve(img);
+  });
+}, {
+  rootMargin: '200px',
+  threshold: 0.01
+});
+
+lazyImages.forEach(img => imageObserver.observe(img));
