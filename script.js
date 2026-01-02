@@ -16,6 +16,7 @@ let isMainPageActive = true; // 首頁預設開啟
 let mainScrollPosition = 0;
 const total = projects.length;
 
+
 // ======= 主頁面區塊滾動變數 =======
 let mainSectionIndex = 0;
 let mainWheelAccumulator = 0;
@@ -515,4 +516,5 @@ sectionsToAnimate.forEach(({ selector, className, threshold }) => {
 
   inner.innerHTML = content;
 })();
+
 
