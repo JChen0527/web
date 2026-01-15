@@ -552,3 +552,76 @@ const imageObserver = new IntersectionObserver((entries, observer) => {
 });
 
 lazyImages.forEach(img => imageObserver.observe(img));
+
+// ======= 手機版 H1 標題若換行就縮小 =======
+function adjustMobileFontSizes() {
+  // 僅針對手機版 (768px 以下)
+  if (window.innerWidth > 768) {
+    document.querySelectorAll('h1').forEach(h1 => {
+      h1.style.removeProperty('font-size'); // 清除可能的 inline style
+    });
+    return;
+  }
+
+  const h1s = document.querySelectorAll('h1');
+  h1s.forEach(h1 => {
+    // 1. 先重置，確保測量準確
+    h1.style.removeProperty('font-size');
+
+    // 取得基本樣式
+    const computedStyle = window.getComputedStyle(h1);
+    let fontSize = parseFloat(computedStyle.fontSize);
+
+    // 2. 檢查高度是否超過一行 (容許一點誤差，例如 1.2 倍行高以內算一行)
+    // 瀏覽器 computed lineHeight 可能回傳 'normal' 或具體 px。
+    // 若是 normal，通常約 1.2 * fontSize
+    let lineHeight = parseFloat(computedStyle.lineHeight);
+    if (isNaN(lineHeight)) {
+      lineHeight = fontSize * 1.2;
+    }
+
+    // 如果目前高度 > 行高 * 1.1 (視為換行)
+    if (h1.offsetHeight > lineHeight * 1.5) {
+
+      // 逐像素縮小，直到變回一行 (或達到最小限制 20px)
+      while (fontSize > 16) { // 最小值設寬容一點
+
+        fontSize -= 1;
+        h1.style.setProperty('font-size', `${fontSize}px`, 'important');
+
+        // 重新檢查行高與高度 (因為改了 fontSize，lineHeight 也會變)
+        const newComputed = window.getComputedStyle(h1);
+        let newLineHeight = parseFloat(newComputed.lineHeight);
+        if (isNaN(newLineHeight)) newLineHeight = fontSize * 1.2;
+
+        // 如果高度已經縮回一行範圍內，就停止
+        if (h1.offsetHeight <= newLineHeight * 1.5) {
+          break;
+        }
+      }
+    }
+  });
+}
+
+// 監聽 resize 與 load
+window.addEventListener('resize', adjustMobileFontSizes);
+window.addEventListener('load', adjustMobileFontSizes);
+
+// 字型載入後重新計算
+if (document.fonts) {
+  document.fonts.ready.then(adjustMobileFontSizes);
+}
+
+// 定時檢查
+setTimeout(adjustMobileFontSizes, 500);
+setTimeout(adjustMobileFontSizes, 1500);
+
+// 當點擊進入詳細頁或切換專案時觸發
+const updateTriggers = document.querySelectorAll('.project .arrow, #main-go-to-projects, #go-to-projects, .ticker-inner');
+updateTriggers.forEach(btn => {
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    setTimeout(adjustMobileFontSizes, 100);
+    setTimeout(adjustMobileFontSizes, 600);
+  });
+});

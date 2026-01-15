@@ -1066,6 +1066,7 @@ footer {
   .menu-btn { top: 20px !important; right: 20px !important; width: 45px !important; height: 45px !important; }
   .nav-link { font-size: 1.8rem !important; }
   .projects-link { font-size: 1.4rem !important; }
+  .nav-content li { text-align: center !important; }
 
   /* 天空元件縮放 */
   .sun { width: 40px !important; height: 40px !important; }
