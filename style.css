@@ -180,7 +180,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 10vh 5% 5vh 2%; 
 }
  
@@ -940,9 +940,15 @@ footer {
 /* === 手機版 RWD === */
 @media (max-width: 768px) {
   :root { --vh: 1vh; }
-  html, body, #main-page, #projects, .detail { 
+  html, body, #projects, .detail { 
     height: calc(var(--vh, 1vh) * 100); 
     overflow-x: hidden;
+  }
+  
+  #main-page {
+    height: calc(var(--vh, 1vh) * 100); 
+    overflow: hidden !important;
+    touch-action: none; /* Prevent native scrolling/zooming interference */
   }
 
   .main-content { padding: 0; }
@@ -996,6 +1002,7 @@ footer {
   }
   .about-center-block p { padding-top: 15px !important; }
   .work-ticker { display: none !important; }
+  .project-tags { display: none !important; }
 
   /* --- Awards 手機版 --- */
   .awards { justify-content: flex-start !important; padding-top: 50% !important; }
@@ -1009,17 +1016,23 @@ footer {
   .awards ul p { margin-bottom: 8px !important;font-size: 0.75rem !important;  }
 
   /* --- Career (Works) 手機版 --- */
-  .works h1 { text-align: left !important; }
+  .works { 
+    justify-content: center !important; 
+    padding: 0 8% !important; /* Reduce top/bottom padding to optimize space */
+  }
+  .works h1 { text-align: left !important; margin-bottom: 10px !important; }
   .works-info { width: 100% !important; max-width: 100% !important; }
   .works-content-wrapper {
     flex-direction: column !important;
-    gap: 20px !important;
+    gap: 5px !important; /* Minimize gap */
     width: 100% !important;
   }
   .works-list { padding: 0 !important; width: 100% !important; }
-  .work-item { margin-bottom: 25px !important; text-align: justify !important; }
-  .work-item h2 { font-size: 1.4rem !important; margin-bottom: 5px !important; }
-  .about-right-block { margin-top: 10px !important; }
+  .work-item { margin-bottom: 10px !important; text-align: justify !important; }
+  .work-item h2 { font-size: clamp(1rem, 2.2vh, 1.2rem) !important; margin-bottom: 2px !important; }
+  .work-item p { font-size: clamp(0.75rem, 1.8vh, 0.9rem) !important; margin-bottom: 2px !important; line-height: 1.4 !important; }
+  .about-right-block { margin-top: 5px !important; }
+  .about-right-block p { font-size: clamp(0.75rem, 1.8vh, 0.85rem) !important; line-height: 1.4 !important; }
 
   /* --- Skills 手機版 --- */
   .skills-grid { justify-content: flex-start !important; gap: 10px !important; width: 100% !important; }
@@ -1028,7 +1041,26 @@ footer {
   .logo-track img { width: 45px !important; height: 45px !important; } 
   
   /* --- Main Projects Entrance --- */
-  .main-projects { background-image: none !important; background-color: #ffbb56 !important; align-items: flex-start !important; }
+  .main-projects { 
+    background-image: none !important; 
+    background-color: #ffbb56 !important; 
+    align-items: center !important; 
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+  
+  .main-projects-visual {
+    display: block !important;
+    width: 100% !important;
+    height: 50vh !important;
+    order: -1 !important; /* Move to top */
+    margin-left: 0 !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .project-tags {
+     display: none !important;
+  }
   .main-projects-info { text-align: left !important; }
   .main-projects-link p { font-size: 1rem !important; margin-bottom: 30px !important; opacity: 0.9; }
   .projects-entrance-btn { 
@@ -1072,6 +1104,17 @@ footer {
   .sun { width: 40px !important; height: 40px !important; }
   .moon { width: 60px !important; height: 60px !important; }
   .moon::after { display: none; }
+
+  /* Back Icon Mobile Size */
+  .return-arrow-projects, .project .arrow, #projects-back, .detail-content .back {
+    width: 40px !important;
+    height: 60px !important;
+  }
+  
+  .return-arrow-projects span, .project .arrow span, #projects-back span, .detail-content .back span {
+    width: 20px !important;
+    height: 20px !important;
+  }
 }
 
 /* === 下雨效果 === */
@@ -1121,18 +1164,11 @@ footer {
   height: 60vh; /* Adjusted to fit nicely */
   object-fit: cover;
   flex-shrink: 0;
-  filter: grayscale(100%);
-  transition: filter 0.4s ease, transform 0.4s ease;
+  transition: transform 0.4s ease;
   border-radius: 8px;
   -webkit-touch-callout: none;
   user-select: none;
   -webkit-user-drag: none;
-}
-
-/* Hover Micro-interaction */
-.track img:hover {
-  filter: grayscale(0%);
-  transform: scale(1.03);
 }
 
 /* === Skills Section (Independent) === */
@@ -1141,7 +1177,10 @@ footer {
   width: 100%;
   min-height: 100vh;
   color: white;
-  padding: 5% 5% 0;
+  padding: 0 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .skills-section h1 {
@@ -1231,11 +1270,22 @@ footer {
   width: 100%;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;     /* 文字垂直置中 */
   padding: 0 10%;
   color: white;
   overflow: hidden;
+}
+
+/* 霧面遮罩 */
+.main-projects::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3); /* 半透明黑色底 */
+  backdrop-filter: blur(8px);     /* 模糊濾鏡 */
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1;
 }
 
 /* 文字層級 */
@@ -1278,6 +1328,54 @@ footer {
   background: #fff;
   color: #ffbb56;
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+
+/* 右側滿版圖片區塊 */
+.main-projects-visual {
+  height: 80vh;
+  width: 35%; 
+  position: relative;
+  /* padding-left: 30%; Removed user hack */
+  margin-left: auto; /* Push to the right */
+  z-index: 2; /* Ensure it is above the matte overlay */
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+  overflow: hidden;
+}
+
+.main-projects.fade-in .main-projects-visual {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.main-projects-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 右上角的標籤 */
+.project-tags {
+  position: absolute;
+  top: 5vh;
+  right: 10%;
+  z-index: 5;
+  display: flex;
+  gap: 40px;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+  font-size: 1rem;
+}
+
+.main-projects.fade-in .project-tags {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 

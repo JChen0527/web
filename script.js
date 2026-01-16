@@ -78,7 +78,8 @@ window.addEventListener('wheel', e => {
 
   // 3. 處理「主頁面」的區塊滾動 (帶阻力)
   if (isMainPageActive) {
-    if (window.innerWidth <= 768) return; // 手機版用原生或 swipe
+    // 移除手機版判斷，讓手機也套用阻力滾動邏輯
+    // if (window.innerWidth <= 768) return; 
 
     e.preventDefault();
     const direction = e.deltaY > 0 ? 1 : -1;
@@ -120,7 +121,7 @@ function scrollToMainSection(index) {
   // 滾動完畢後冷卻一段時間
   setTimeout(() => {
     isMainPageScrolling = false;
-  }, 1000);
+  }, 600);
 }
 
 // ======= 手機 swipe (專案列表 & 主頁面) =======
@@ -129,14 +130,15 @@ let touchEndY = 0;
 
 // 為主頁面也加入 touch 監聽
 mainPage.addEventListener('touchstart', e => {
-  if (window.innerWidth > 768) return;
+  // if (window.innerWidth > 768) return;
   touchStartY = e.touches[0].clientY;
 }, { passive: true });
 
 mainPage.addEventListener('touchend', e => {
-  if (window.innerWidth > 768 || !isMainPageActive) return;
-  // touchEndY = e.changedTouches[0].clientY;
-  // handleMainPageSwipe(); // 移除手機版的區塊自動滾動(停留)動作
+  if (!isMainPageActive) return;
+  // if (window.innerWidth > 768) return; // 讓手機版也能觸發 swipe
+  touchEndY = e.changedTouches[0].clientY;
+  handleMainPageSwipe();
 }, { passive: true });
 
 projectsContainer.addEventListener('touchstart', e => {
