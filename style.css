@@ -1117,6 +1117,17 @@ footer {
   }
 }
 
+/* === 圖片載入優化 === */
+img {
+  transition: opacity 0.6s ease;
+}
+img[data-src] {
+  opacity: 0;
+}
+img.loaded {
+  opacity: 1;
+}
+
 /* === 下雨效果 === */
 .rain-lines {
   position: fixed;

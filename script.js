@@ -520,16 +520,47 @@ sectionsToAnimate.forEach(({ selector, className, threshold }) => {
 })();
 
 
+// ======= 優化圖片載入與 Loading Screen =======
 document.body.classList.add('loading');
 
-window.addEventListener('load', () => {
-  const loader = document.getElementById('loading-screen');
+function waitForImages() {
+  const allImages = Array.from(document.querySelectorAll('img'));
 
-  // 小延遲讓動畫順一點（可調）
-  setTimeout(() => {
+  // 篩選出已經有 src 的圖片（非 lazy-load 或已開始載入的）
+  // 並且排除 loading="lazy" 除非它們已經顯示在視窗內，但為了保險起見我們等待主要背景圖
+  // 這裡策略是：等待所有寫死 src 的關鍵圖片
+  const criticalImages = allImages.filter(img => img.hasAttribute('src') && !img.hasAttribute('data-src'));
+
+  const promises = criticalImages.map(img => {
+    if (img.complete) return Promise.resolve();
+    return new Promise(resolve => {
+      img.onload = resolve;
+      img.onerror = resolve; // 即使失敗也算完成，避免卡死
+    });
+  });
+
+  return Promise.all(promises);
+}
+
+// 啟動載入檢查
+Promise.all([
+  waitForImages(),
+  // 確保至少顯示 Loading 一小段時間，避免閃爍
+  new Promise(resolve => setTimeout(resolve, 800)),
+  // 確保 DOM Ready
+  new Promise(resolve => {
+    if (document.readyState === 'complete') resolve();
+    else window.addEventListener('load', resolve);
+  })
+]).then(() => {
+  const loader = document.getElementById('loading-screen');
+  if (loader) {
     loader.classList.add('hide');
-    document.body.classList.remove('loading');
-  }, 500);
+    // 動畫結束後移除 scroll lock
+    setTimeout(() => {
+      document.body.classList.remove('loading');
+    }, 600); // 配合 CSS transition 時間
+  }
 });
 
 
