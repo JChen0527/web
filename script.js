@@ -221,6 +221,7 @@ details.forEach(detail => {
 
   back.addEventListener('click', () => {
     detail.classList.remove('active');
+    // 返回專案列表
     projectsContainer.style.transform = 'translateX(0)';
     showProject(currentIndex);
     mainPage.scrollTo(0, mainScrollPosition);

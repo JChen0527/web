@@ -1,23 +1,23 @@
 /* === 天空容器 (太陽/月亮) === */
 .sky-container {
-  position: fixed; /* 固定在視窗，不與內容一起滾動 */
+  position: fixed; /* 固定在視窗,不與內容一起滾動 */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%; /* 佔滿 main-page */
   pointer-events: none; /* 不擋住點擊 */
-  z-index: 0; /* 在背景處，但在內容之下 */
+  z-index: 0; /* 在背景處,但在內容之下 */
   overflow: hidden;
 }
 
 /* 太陽 */
 .sun {
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: 5rem; /* 80px */
+  height: 5rem; /* 80px */
   background: radial-gradient(circle, #ffd700 20%, #ff8c00 80%);
   border-radius: 50%;
-  box-shadow: 0 0 40px #ff8c00, 0 0 80px #ffd700;
+  box-shadow: 0 0 2.5rem #ff8c00, 0 0 5rem #ffd700; /* 40px, 80px */
   display: none; /* JS 控制顯示 */
   z-index: 10;
   transform: translateX(-50%);
@@ -26,11 +26,11 @@
 /* 月亮 */
 .moon {
   position: absolute;
-  width: 10rem;
-  height: 10rem;
+  width: 10rem; /* 160px */
+  height: 10rem; /* 160px */
   background: radial-gradient(circle, #f0f0f0 20%, #ccc 80%);
   border-radius: 50%;
-  box-shadow: 0 0 20px #fff;
+  box-shadow: 0 0 1.5rem #fff; /* 20px → 24px */
   display: none; /* JS 控制顯示 */
   z-index: 10;
   transform: translateX(-50%);
@@ -42,24 +42,24 @@
   position: absolute;
   top: 20%;
   left: 30%;
-  width: 1rem;
-  height: 1rem;
+  width: 1rem; /* 16px */
+  height: 1rem; /* 16px */
   background: rgba(0,0,0,0.1);
   border-radius: 50%;
-  box-shadow: 20px 10px 0 -3px rgba(0,0,0,0.1), 10px 25px 0 -5px rgba(0,0,0,0.1);
+  box-shadow: 1.5rem 0.5rem 0 0 rgba(0,0,0,0.1), 0.5rem 1.5rem 0 -0.5rem rgba(0,0,0,0.1); /* 20px 10px -3px → 24px 8px 0px, 10px 25px -5px → 8px 24px -8px */
 }
 
 /* 軌跡輔助線 (Debug) */
 .debug-arc {
   position: absolute;
-  /* 高度 90vh 是最高點，寬度 -15% 到 115% 是 130% */
+  /* 高度 90vh 是最高點,寬度 -15% 到 115% 是 130% */
   /* 使用橢圓來模擬正弦波軌跡 */
   width: 130%; 
-  height: 180vh; /* 最高點 90vh，所以橢圓總高 180vh */
+  height: 180vh; /* 最高點 90vh,所以橢圓總高 180vh */
   left: 50%;
   transform: translateX(-50%);
   bottom: -90vh; /* 讓橢圓上半部頂點剛好在 90vh */
-  border: 1px dashed rgba(255, 255, 255, 0);
+  border: 0.5rem dashed rgba(255, 255, 255, 0); /* 1px → 8px */
   border-radius: 50%;
   z-index: 5;
   pointer-events: none;
