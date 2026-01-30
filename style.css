@@ -973,13 +973,13 @@ footer {
   /* 標題與內文自動縮放 */
   h1 { 
     font-size: 2.5rem !important; 
-    margin-bottom: 1.5rem !important; /* 20px → 24px */
+    margin-bottom: 1.2rem !important; /* 20px → 24px */
     width: 100%;
     word-break: break-all;
   }
   p, li, .work-item p, .about-right-block p { 
     font-size: 1rem !important; 
-    line-height: 1.6 !important;
+    line-height: 1.2 !important;
     text-align: justify !important;
   }
 
@@ -1015,7 +1015,7 @@ footer {
     text-align: justify !important;
   }
   .awards ul { padding: 0 !important; list-style: none !important; }
-  .awards ul p { margin-bottom: 0.5rem !important; font-size: 1rem !important; } /* 8px, 0.75rem → 1rem */
+  .awards ul p { margin-bottom: 0.5rem !important; font-size: .8rem !important; } /* 8px, 0.75rem → 1rem */
 
   /* --- Career (Works) 手機版 --- */
   .works { 
@@ -1034,7 +1034,7 @@ footer {
   .work-item h2 { font-size: clamp(1rem, 2.2vh, 1.2rem) !important; margin-bottom: 0 !important; } /* 2px → 0px */
   .work-item p { font-size: clamp(0.75rem, 1.8vh, 0.9rem) !important; margin-bottom: 0 !important; line-height: 1.4 !important; } /* 2px → 0px */
   .about-right-block { margin-top: 0.5rem !important; } /* 5px → 8px */
-  .about-right-block p { font-size: clamp(0.75rem, 1.8vh, 0.85rem) !important; line-height: 1.4 !important; }
+  .about-right-block p { font-size: 0.9rem !important; line-height: 1.5 !important; }
 
   /* --- Skills 手機版 --- */
   .skills-grid { justify-content: flex-start !important; gap: 0.5rem !important; width: 100% !important; } /* 10px → 8px */
@@ -1101,6 +1101,11 @@ footer {
   .nav-link { font-size: 2rem !important; } /* 1.8rem → 2rem */
   .projects-link { font-size: 1.5rem !important; } /* 1.4rem → 1.5rem */
   .nav-content li { text-align: center !important; }
+  .burger { width: 1rem !important; height: 1rem !important; } /* 30px → 32px, 45px → 48px */
+  
+  /* Mobile Burger Open State Centering */
+  .menu-btn.open .burger span:nth-child(1) { transform: translateY(0.4rem) rotate(45deg); }
+  .menu-btn.open .burger span:nth-child(3) { transform: translateY(-0.4rem) rotate(-45deg); }
 
   /* 天空元件縮放 */
   .sun { width: 2.5rem !important; height: 2.5rem !important; } /* 40px */
