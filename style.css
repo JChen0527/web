@@ -1002,7 +1002,7 @@ footer {
     text-align: justify !important;
     margin-bottom: 2rem !important; /* 30px → 32px */
   }
-  .about-center-block p { padding-top: 1rem !important; } /* 15px → 16px */
+  .about-center-block p { padding-top: 1rem !important; line-height: 1.5 !important; font-size: .8rem !important; } /* 15px → 16px */
   .work-ticker { display: none !important; }
   .project-tags { display: none !important; }
 
@@ -1064,6 +1064,7 @@ footer {
      display: none !important;
   }
   .main-projects-info { text-align: left !important; }
+  .main-projects-info h1 { text-align: center !important; } /* 2px → 0px */  
   .main-projects-link p { font-size: 1rem !important; margin-bottom: 2rem !important; opacity: 0.9; } /* 30px → 32px */
   .projects-entrance-btn { 
     font-size: 1.5rem !important; 
@@ -1094,7 +1095,10 @@ footer {
   /* 專案詳細 */
   .detail-scroll { padding: 12%; }
   .project-title { padding-bottom: -2rem !important; }
-  
+  .project-description p{ font-size: 1rem !important; line-height: 1.5rem !important; }
+  .project-description li { font-size: 1rem !important; line-height: 1.5rem !important;}
+  .project-description .project-image .loaded { border-radius: 0.5rem !important; }
+
   /* --- UI 改進 --- */
   #progress-bar { width: 0.5rem !important; height: 6.5rem !important; right: 1rem !important; } /* 6px → 8px, 100px → 104px, 15px → 16px */
   .menu-btn { top: 1.5rem !important; right: 1.5rem !important; width: 3rem !important; height: 3rem !important; } /* 20px → 24px, 45px → 48px */
